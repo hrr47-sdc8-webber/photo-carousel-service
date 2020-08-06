@@ -12,7 +12,7 @@ CREATE TABLE Restaurants (
 
 CREATE TABLE Photos (
   id int NOT NULL AUTO_INCREMENT,
-  img_url varchar(100),
+  img_url char(12), --image URL will only contain the unique identifier. example: 'img0000.jpeg'
   Restaurant_id int,
   PRIMARY KEY(id),
   FOREIGN KEY(Restaurant_id) REFERENCES Restaurants(id)
