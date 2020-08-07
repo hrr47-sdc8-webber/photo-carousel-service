@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 connection.connect();
 
 const insertRestaurant = function (name, restaurantID) {
-  let insertString = `INSERT into Restaurants (Restaurant_Name, Restaurant_id) values ('${name}', ${restaurantID})`;
+  let insertString = `INSERT into Restaurants (Restaurant_Name, Restaurant_id) values ("${name}", ${restaurantID})`;
   connection.query(insertString, (err, success) => {
     if (err) {
       throw err;
