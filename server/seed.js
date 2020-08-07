@@ -17,7 +17,12 @@ for (let i = 1; i <= 100; i++) {
       imageNumber = Math.floor(49 * Math.random());
     }
     imageArray.push(imageNumber);
-    let imageURL = `img00${imageNumber}.jpeg`;
-    db.insertImage(imageURL, i);
+    if (imageNumber < 10) {
+      let imageURL = `img000${imageNumber}.jpeg`;
+      db.insertImage(imageURL, i);
+    } else {
+      let imageURL = `img00${imageNumber}.jpeg`;
+      db.insertImage(imageURL, i);
+    }
   }
 }
