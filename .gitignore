@@ -1,6 +1,9 @@
 ## MAC files ##
 .DS_Store
 
+## Media files ##
+server/images
+
 ## NPM ##
 npm
 npm-debug.log
