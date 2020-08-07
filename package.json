@@ -7,7 +7,9 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "seed": "node server/seed.js"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
