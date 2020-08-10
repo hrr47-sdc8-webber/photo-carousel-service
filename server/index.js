@@ -9,10 +9,10 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/:id', express.static('public'));
 
 // API ROUTES
-app.get('/api/photos/:restaurantID', (req, res) => {
+app.get('/:id/api/photos/:restaurantID', (req, res) => {
   db.retrieveImages(req.params.restaurantID, req, res);
 });
 
