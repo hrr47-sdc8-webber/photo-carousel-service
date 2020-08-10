@@ -4,7 +4,7 @@ module.exports = {
   entry: './client/index.jsx',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'client/dist'),
+    path: path.resolve(__dirname, 'public/dist'),
   },
   module: {
     rules: [
