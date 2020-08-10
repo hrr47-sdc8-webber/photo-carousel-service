@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import Carousel from './components/carousel.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,18 +20,22 @@ class App extends React.Component {
         console.log('Request failed');
       },
       complete: (res) => {
-        this.setState({ photoArray: res });
+        this.setState({ photoArray: res.responseJSON });
       },
     };
     $.ajax(options);
   }
 
+  componentDidMount() {
+    this.retrievePhotos(window.location.pathname.split('/')[1]);
+  }
+
   render() {
     return (
       <div>
-        Hello world
+        <Carousel photoArray={this.state.photoArray} />
       </div>
-    )
+    );
   }
 }
 
