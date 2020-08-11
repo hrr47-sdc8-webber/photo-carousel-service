@@ -34,23 +34,9 @@ class App extends React.Component {
       },
       complete: (res) => {
         this.setState({ photoArray: res.responseJSON });
-        this.determineGridLayout(res.responseJSON.length);
       },
     };
     $.ajax(options);
-  }
-
-  determineGridLayout(photoCount) {
-    const gridLayout = {};
-    gridLayout.columnCount = Math.ceil((2 / 3) * photoCount);
-    gridLayout.remainder = photoCount % 3;
-    this
-    const Grid = styled.div`
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(250, 1fr) );
-     grid-template-rows: minmax(30px, 90px) minmax(30px, 90px);
-     grid-auto-flow: column;
-    `;
   }
 
   componentDidMount() {
