@@ -50,6 +50,12 @@ class App extends React.Component {
     });
   }
 
+  closeCarousel() {
+    this.setState({
+      displayCarousel: false,
+    });
+  }
+
   // determineGridLayout(photoCount) {
   //   const gridLayout = {};
   //   gridLayout.columnCount = Math.ceil((2 / 3) * photoCount);
@@ -73,13 +79,15 @@ class App extends React.Component {
           <Grid>
             {this.state.photoArray.map((photo, i) => <GridEntry
               key={i} photo={photo} openCarousel={this.openCarousel.bind(this)}
+              closeCarousel={this.closeCarousel.bind(this)}
             />)}
           </Grid>
         </div>
         <div>
           <Carousel photoArray={this.state.photoArray}
             displayCarousel={this.state.displayCarousel}
-            startingPhoto={this.state.startingPhoto}/>
+            startingPhoto={this.state.startingPhoto}
+            closeCarousel={this.closeCarousel.bind(this)}/>
         </div>
       </div>
     );
