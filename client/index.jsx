@@ -7,9 +7,12 @@ import Carousel from './components/carousel.jsx';
 
 const Grid = styled.div`
 display: grid;
-grid-template-columns: auto auto auto;
-grid-template-rows: auto auto;
+overflow: hidden;
+grid-template-columns: 16vw 16vw 16vw 16vw 16vw 16vw;
+grid-template-rows: 12vw 12vw;
 grid-auto-flow: column;
+grid-row-gap: 3px;
+grid-column-gap: 2px;
 `;
 
 class App extends React.Component {
@@ -41,7 +44,13 @@ class App extends React.Component {
     const gridLayout = {};
     gridLayout.columnCount = Math.ceil((2 / 3) * photoCount);
     gridLayout.remainder = photoCount % 3;
-    this.setState({ gridLayout });
+    this
+    const Grid = styled.div`
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(250, 1fr) );
+     grid-template-rows: minmax(30px, 90px) minmax(30px, 90px);
+     grid-auto-flow: column;
+    `;
   }
 
   componentDidMount() {
@@ -54,13 +63,13 @@ class App extends React.Component {
         <div className='grid'>
           <Grid>
             {this.state.photoArray.map((photo, i) => <GridEntry
-            key={i} photo={photo}
+              key={i} photo={photo}
             />)}
           </Grid>
         </div>
         <div>
           <Carousel photoArray={this.state.photoArray}
-          displayCarousel={this.state.displayCarousel} />
+            displayCarousel={this.state.displayCarousel} />
         </div>
       </div>
     );
