@@ -6,6 +6,8 @@ import GridEntry from './components/gridEntry.jsx';
 import Carousel from './components/carousel.jsx';
 
 const Grid = styled.div`
+position: fixed;
+z-index: 0;
 display: grid;
 overflow: hidden;
 grid-template-columns: 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw;

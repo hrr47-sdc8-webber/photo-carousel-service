@@ -11,6 +11,7 @@ transition: transform .2s;
 overflow: hidden;
 &:hover{
   transform: scale(1.02);
+  cursor: pointer;
 }
 `;
 
@@ -21,11 +22,11 @@ transition: transform .2s;
 overflow: hidden;
 &:hover{
   transform: scale(1.02);
+  cursor: pointer;
 }
 `;
 
 const GridEntry = (props) => {
-  console.log(props.photo.Image_url);
   if (props.photo.Image_id % 3 === 1) {
     return <BigImage src={props.photo.Image_url}
       onClick={() => { props.openCarousel(props.photo.Image_id); }}
