@@ -1,5 +1,5 @@
 import React from 'react';
-// import $ from 'jquery';
+import PropTypes from 'prop-types';
 import Slide from './slide.jsx';
 import Arrow from './arrow.jsx';
 
@@ -7,7 +7,7 @@ class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPhoto: 0,
+      currentPhoto: this.props.startingPhoto,
     };
   }
 
@@ -36,7 +36,7 @@ class Carousel extends React.Component {
   render() {
     if (this.props.displayCarousel) {
       return (
-        <div className='carousel'>
+        <div className='carousel' style={{ display: 'block' }}>
           <Arrow
             direction="left"
             clickFunc={this.previousSlide.bind(this)}
@@ -54,5 +54,11 @@ class Carousel extends React.Component {
     return null;
   }
 }
+
+Carousel.propTypes = {
+  photoArray: PropTypes.array.isrequired,
+  displayCarousel: PropTypes.bool.isrequired,
+  startingPhoto: PropTypes.number.isrequired,
+};
 
 export default Carousel;
