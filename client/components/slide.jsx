@@ -1,14 +1,26 @@
 import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Slide = ({ url }) => {
-  const styles = {
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  };
+  const SlideImage = styled.img`
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  `;
 
   return (
-    <div className="slide" style={styles}> <img src={url} /> </div>
+    <div>
+      <SlideImage src={url} />
+    </div>
   );
+};
+
+Slide.propTypes = {
+  url: PropTypes.string.isRequired,
 };
 
 export default Slide;

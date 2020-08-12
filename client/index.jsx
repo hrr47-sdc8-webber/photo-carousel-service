@@ -6,9 +6,11 @@ import GridEntry from './components/gridEntry.jsx';
 import Carousel from './components/carousel.jsx';
 
 const Grid = styled.div`
+position: fixed;
+z-index: 0;
 display: grid;
 overflow: hidden;
-grid-template-columns: 16vw 16vw 16vw 16vw 16vw 16vw;
+grid-template-columns: 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw;
 grid-template-rows: 12vw 12vw;
 grid-auto-flow: column;
 grid-row-gap: 3px;
@@ -22,6 +24,7 @@ class App extends React.Component {
       photoArray: [],
       displayCarousel: false,
       gridLayout: {},
+      startingPhoto: 0,
     };
   }
 
@@ -38,6 +41,20 @@ class App extends React.Component {
     };
     $.ajax(options);
   }
+  openCarousel(photoNumber) {
+    console.log(photoNumber);
+    this.setState({
+      startingPhoto: photoNumber - 1,
+      displayCarousel: true,
+    });
+  }
+
+  closeCarousel() {
+    this.setState({
+      displayCarousel: false,
+    });
+  }
+
 
   componentDidMount() {
     this.retrievePhotos(window.location.pathname.split('/')[1]);
@@ -49,13 +66,17 @@ class App extends React.Component {
         <div className='grid'>
           <Grid>
             {this.state.photoArray.map((photo, i) => <GridEntry
-              key={i} photo={photo}
+              key={i} photo={photo} openCarousel={this.openCarousel.bind(this)}
+              closeCarousel={this.closeCarousel.bind(this)}
             />)}
           </Grid>
         </div>
         <div>
           <Carousel photoArray={this.state.photoArray}
-            displayCarousel={this.state.displayCarousel} />
+            displayCarousel={this.state.displayCarousel}
+            startingPhoto={this.state.startingPhoto}
+            closeCarousel={this.closeCarousel.bind(this)}
+            closeSymbol="&#x2715;"/>
         </div>
       </div>
     );
