@@ -1,7 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import styled from 'styled-components';
+import GridEntry from './components/gridEntry.jsx';
 import Carousel from './components/carousel.jsx';
+
+const Grid = styled.div`
+display: grid;
+overflow: hidden;
+grid-template-columns: 16vw 16vw 16vw 16vw 16vw 16vw;
+grid-template-rows: 12vw 12vw;
+grid-auto-flow: column;
+grid-row-gap: 3px;
+grid-column-gap: 2px;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -9,6 +21,7 @@ class App extends React.Component {
     this.state = {
       photoArray: [],
       displayCarousel: false,
+      gridLayout: {},
     };
   }
 
@@ -33,7 +46,17 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Carousel photoArray={this.state.photoArray} />
+        <div className='grid'>
+          <Grid>
+            {this.state.photoArray.map((photo, i) => <GridEntry
+              key={i} photo={photo}
+            />)}
+          </Grid>
+        </div>
+        <div>
+          <Carousel photoArray={this.state.photoArray}
+            displayCarousel={this.state.displayCarousel} />
+        </div>
       </div>
     );
   }

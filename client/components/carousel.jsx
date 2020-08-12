@@ -34,21 +34,24 @@ class Carousel extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <Arrow
-          direction="left"
-          clickFunc={this.previousSlide.bind(this)}
-          symbol="&#9664;" />
+    if (this.props.displayCarousel) {
+      return (
+        <div className='carousel'>
+          <Arrow
+            direction="left"
+            clickFunc={this.previousSlide.bind(this)}
+            symbol="&#9664;" />
 
-        <Slide url={this.props.photoArray.length ? this.props.photoArray[this.state.currentPhoto].Image_url : ''} />
+          <Slide url={this.props.photoArray.length ? this.props.photoArray[this.state.currentPhoto].Image_url : ''} />
 
-        <Arrow
-          direction="right"
-          clickFunc={this.nextSlide.bind(this)}
-          symbol="&#9654;" />
-      </div>
-    );
+          <Arrow
+            direction="right"
+            clickFunc={this.nextSlide.bind(this)}
+            symbol="&#9654;" />
+        </div>
+      );
+    }
+    return null;
   }
 }
 
