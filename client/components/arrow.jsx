@@ -8,9 +8,7 @@ const Arrow = ({ direction, clickFunc, symbol }) => {
   position: absolute;
   left: 100px;
   top: 50%;
-  &:hover{
-    cursor: pointer;
-  }
+  cursor: pointer;
   `;
 
   const RightArrow = styled.span`
@@ -18,9 +16,7 @@ const Arrow = ({ direction, clickFunc, symbol }) => {
   position: absolute;
   right: 100px;
   top: 50%;
-  &:hover{
-    cursor: pointer;
-  }
+  cursor: pointer;
   `;
 
   if (direction === 'left') {
