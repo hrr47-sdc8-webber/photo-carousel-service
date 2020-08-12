@@ -41,7 +41,6 @@ class App extends React.Component {
     };
     $.ajax(options);
   }
-
   openCarousel(photoNumber) {
     console.log(photoNumber);
     this.setState({
@@ -56,17 +55,6 @@ class App extends React.Component {
     });
   }
 
-  // determineGridLayout(photoCount) {
-  //   const gridLayout = {};
-  //   gridLayout.columnCount = Math.ceil((2 / 3) * photoCount);
-  //   gridLayout.remainder = photoCount % 3;
-  //   const Grid = styled.div`
-  //    display: grid;
-  //    grid-template-columns: repeat(auto-fit, minmax(250, 1fr) );
-  //    grid-template-rows: minmax(30px, 90px) minmax(30px, 90px);
-  //    grid-auto-flow: column;
-  //   `;
-  // }
 
   componentDidMount() {
     this.retrievePhotos(window.location.pathname.split('/')[1]);
