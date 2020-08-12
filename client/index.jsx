@@ -87,7 +87,8 @@ class App extends React.Component {
           <Carousel photoArray={this.state.photoArray}
             displayCarousel={this.state.displayCarousel}
             startingPhoto={this.state.startingPhoto}
-            closeCarousel={this.closeCarousel.bind(this)}/>
+            closeCarousel={this.closeCarousel.bind(this)}
+            closeSymbol="&#x2715;"/>
         </div>
       </div>
     );

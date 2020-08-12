@@ -7,11 +7,35 @@ import Arrow from './arrow.jsx';
 const Modal = styled.div`
 position: fixed;
 z-index: 1;
-padding-top: 100px;
+padding-top: 30px;
 width: 100%;
 height: 100%;
 overflow: auto;
 background-color: rgba(0, 0, 0, 0.8);
+`;
+
+const CloseButton = styled.span`
+position: fixed;
+z-index: 1;
+right: 10%;
+top: 10%;
+color: white;
+border-color: rgba(0,0,0,0.9);
+font-size: 30px;
+font-family: "Lucida Sans Unicode", "Arial Unicode MS";
+cursor: pointer;
+border: 1px hidden;
+width: 40px;
+height: 40px;
+text-align: center;
+border-radius: 50%;
+bottom-margin: 1px;
+background-color: rgba(0,0,0,0.9);
+&:hover{
+  color: rgba(0,0,0,0.9);
+  background-color: white;
+  border-color: white;
+}
 `;
 
 class Carousel extends React.Component {
@@ -48,6 +72,7 @@ class Carousel extends React.Component {
     if (this.props.displayCarousel) {
       return (
         <Modal>
+          <CloseButton onClick={this.props.closeCarousel}>{this.props.closeSymbol}</CloseButton>
           <div>
           <Arrow
             direction="left"
@@ -71,6 +96,8 @@ Carousel.propTypes = {
   photoArray: PropTypes.array.isrequired,
   displayCarousel: PropTypes.bool.isrequired,
   startingPhoto: PropTypes.number.isrequired,
+  closeCarousel: PropTypes.func,
+  closeSymbol: PropTypes.string,
 };
 
 export default Carousel;
