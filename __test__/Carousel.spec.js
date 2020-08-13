@@ -28,8 +28,9 @@ describe('Carousel', () => {
       closeSymbol: '&#x2715',
     };
     const carousel = shallow(<Carousel {...carouselProps}/>);
-    expect(carousel.find('div').exists()).toEqual(true);
+    expect(carousel.exists('div')).toEqual(true);
   });
+
   it('should return an empty wrapper if displayCarousel is false', () => {
     const carouselProps = {
       photoArray: [{
