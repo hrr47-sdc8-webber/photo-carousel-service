@@ -60,9 +60,9 @@ const Arrow = ({ direction, clickFunc, symbol }) => {
 };
 
 Arrow.propTypes = {
-  direction: PropTypes.string.isRequired,
-  clickFunc: PropTypes.func.isrequired,
-  symbol: PropTypes.string.isRequired,
+  direction: PropTypes.string,
+  clickFunc: PropTypes.func,
+  symbol: PropTypes.string,
 };
 
 export default Arrow;
