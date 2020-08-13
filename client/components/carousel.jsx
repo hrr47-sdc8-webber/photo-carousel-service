@@ -30,7 +30,7 @@ cursor: pointer;
 border: 1px hidden;
 width: 40px;
 height: 40px;
-border-radius: 50%
+border-radius: 50%;
 background-color: rgba(0,0,0,0.9);
 &:hover{
   color: rgba(0,0,0,0.9);
@@ -40,35 +40,6 @@ background-color: rgba(0,0,0,0.9);
 `;
 
 class Carousel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentPhoto: this.props.startingPhoto,
-    };
-  }
-
-  previousSlide() {
-    const lastIndex = this.props.photoArray.length - 1;
-    const currentPhotoIndex = this.state.currentPhoto;
-    const shouldResetIndex = currentPhotoIndex === 0;
-    const index = shouldResetIndex ? lastIndex : currentPhotoIndex - 1;
-
-    this.setState({
-      currentPhoto: index,
-    });
-  }
-
-  nextSlide() {
-    const lastIndex = this.props.photoArray.length - 1;
-    const currentPhotoIndex = this.state.currentPhoto;
-    const shouldResetIndex = currentPhotoIndex === lastIndex;
-    const index = shouldResetIndex ? 0 : currentPhotoIndex + 1;
-
-    this.setState({
-      currentPhoto: index,
-    });
-  }
-
   render() {
     if (this.props.displayCarousel) {
       return (
@@ -77,13 +48,13 @@ class Carousel extends React.Component {
           <div>
             <Arrow
               direction="left"
-              clickFunc={this.previousSlide.bind(this)}
+              clickFunc={this.props.previousSlide}
               symbol="&#9664;" />
             <Slide url={this.props.photoArray.length
-              ? this.props.photoArray[this.state.currentPhoto].Image_url : ''} />
+              ? this.props.photoArray[this.props.currentPhoto].Image_url : ''} />
             <Arrow
               direction="right"
-              clickFunc={this.nextSlide.bind(this)}
+              clickFunc={this.props.nextSlide}
               symbol="&#9654;" />
           </div>
         </Modal>
@@ -96,8 +67,10 @@ class Carousel extends React.Component {
 Carousel.propTypes = {
   photoArray: PropTypes.array.isrequired,
   displayCarousel: PropTypes.bool.isrequired,
-  startingPhoto: PropTypes.number.isrequired,
+  currentPhoto: PropTypes.number.isrequired,
   closeCarousel: PropTypes.func,
+  nextSlide: PropTypes.func,
+  previousSlide: PropTypes.func,
   closeSymbol: PropTypes.string,
 };
 

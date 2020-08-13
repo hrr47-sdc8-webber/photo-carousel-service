@@ -24,7 +24,7 @@ class App extends React.Component {
       photoArray: [],
       displayCarousel: false,
       gridLayout: {},
-      startingPhoto: 0,
+      currentPhoto: 0,
     };
   }
 
@@ -41,10 +41,10 @@ class App extends React.Component {
     };
     $.ajax(options);
   }
+
   openCarousel(photoNumber) {
-    console.log(photoNumber);
     this.setState({
-      startingPhoto: photoNumber - 1,
+      currentPhoto: photoNumber - 1,
       displayCarousel: true,
     });
   }
@@ -55,9 +55,30 @@ class App extends React.Component {
     });
   }
 
-
   componentDidMount() {
     this.retrievePhotos(window.location.pathname.split('/')[1]);
+  }
+
+  previousSlide() {
+    const lastIndex = this.state.photoArray.length - 1;
+    const currentPhotoIndex = this.state.currentPhoto;
+    const shouldResetIndex = currentPhotoIndex === 0;
+    const index = shouldResetIndex ? lastIndex : currentPhotoIndex - 1;
+
+    this.setState({
+      currentPhoto: index,
+    });
+  }
+
+  nextSlide() {
+    const lastIndex = this.state.photoArray.length - 1;
+    const currentPhotoIndex = this.state.currentPhoto;
+    const shouldResetIndex = currentPhotoIndex === lastIndex;
+    const index = shouldResetIndex ? 0 : currentPhotoIndex + 1;
+
+    this.setState({
+      currentPhoto: index,
+    });
   }
 
   render() {
@@ -74,9 +95,11 @@ class App extends React.Component {
         <div>
           <Carousel photoArray={this.state.photoArray}
             displayCarousel={this.state.displayCarousel}
-            startingPhoto={this.state.startingPhoto}
+            currentPhoto={this.state.currentPhoto}
             closeCarousel={this.closeCarousel.bind(this)}
-            closeSymbol="&#x2715;"/>
+            previousSlide={this.previousSlide.bind(this)}
+            nextSlide={this.nextSlide.bind(this)}
+            closeSymbol="&#x2715;" />
         </div>
       </div>
     );
