@@ -37,6 +37,7 @@ class App extends React.Component {
       },
       complete: (res) => {
         this.setState({ photoArray: res.responseJSON });
+        console.log(res.responseJSON);
       },
     };
     $.ajax(options);
