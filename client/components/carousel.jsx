@@ -94,9 +94,9 @@ class Carousel extends React.Component {
 }
 
 Carousel.propTypes = {
-  photoArray: PropTypes.array.isrequired,
-  displayCarousel: PropTypes.bool.isrequired,
-  startingPhoto: PropTypes.number.isrequired,
+  photoArray: PropTypes.array,
+  displayCarousel: PropTypes.bool,
+  startingPhoto: PropTypes.number,
   closeCarousel: PropTypes.func,
   closeSymbol: PropTypes.string,
 };

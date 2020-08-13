@@ -8,7 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node server/seed.js"
+    "seed": "node server/seed.js",
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
