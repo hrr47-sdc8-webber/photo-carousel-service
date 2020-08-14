@@ -43,7 +43,7 @@ class Carousel extends React.Component {
   render() {
     if (this.props.displayCarousel) {
       return (
-        <Modal>
+        <Modal tabIndex={0} onKeyDown={(event) => this.props.handleKeyPress(event)}>
           <CloseButton onClick={this.props.closeCarousel}>{this.props.closeSymbol}</CloseButton>
           <div>
             <Arrow
@@ -68,7 +68,6 @@ Carousel.propTypes = {
   photoArray: PropTypes.array,
   displayCarousel: PropTypes.bool,
   startingPhoto: PropTypes.number,
-
   closeCarousel: PropTypes.func,
   nextSlide: PropTypes.func,
   previousSlide: PropTypes.func,

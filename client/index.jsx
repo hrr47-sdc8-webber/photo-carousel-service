@@ -82,6 +82,16 @@ class App extends React.Component {
     });
   }
 
+  handleKeyPress(e) {
+    if (e.key === 'ArrowLeft') {
+      this.previousSlide();
+    } else if (e.key === 'ArrowRight') {
+      this.nextSlide();
+    } else if (e.key === 'Escape') {
+      this.closeCarousel();
+    }
+  }
+
   render() {
     return (
       <div>
@@ -100,6 +110,7 @@ class App extends React.Component {
             closeCarousel={this.closeCarousel.bind(this)}
             previousSlide={this.previousSlide.bind(this)}
             nextSlide={this.nextSlide.bind(this)}
+            handleKeyPress={this.handleKeyPress.bind(this)}
             closeSymbol="&#x2715;" />
         </div>
       </div>
