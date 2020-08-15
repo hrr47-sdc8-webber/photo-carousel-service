@@ -30,7 +30,7 @@ cursor: pointer;
 border: 1px hidden;
 width: 40px;
 height: 40px;
-border-radius: 50%;
+border-radius: 50%
 background-color: rgba(0,0,0,0.9);
 &:hover{
   color: rgba(0,0,0,0.9);
@@ -39,39 +39,38 @@ background-color: rgba(0,0,0,0.9);
 }
 `;
 
-class Carousel extends React.Component {
-  render() {
-    if (this.props.displayCarousel) {
-      return (
-        <Modal tabIndex={0} onKeyDown={(event) => this.props.handleKeyPress(event)}>
-          <CloseButton onClick={this.props.closeCarousel}>{this.props.closeSymbol}</CloseButton>
-          <div>
-            <Arrow
-              direction="left"
-              clickFunc={this.props.previousSlide}
-              symbol="&#9664;" />
-            <Slide url={this.props.photoArray.length
-              ? this.props.photoArray[this.props.currentPhoto].Image_url : ''} />
-            <Arrow
-              direction="right"
-              clickFunc={this.props.nextSlide}
-              symbol="&#9654;" />
-          </div>
-        </Modal>
-      );
-    }
-    return null;
+const Carousel = (props) => {
+  if (props.displayCarousel) {
+    return (
+      <Modal tabIndex={0} onKeyDown={(event) => props.handleKeyPress(event)}>
+        <CloseButton onClick={props.closeCarousel}>{props.closeSymbol}</CloseButton>
+        <div>
+          <Arrow
+            direction="left"
+            clickFunc={props.previousSlide}
+            symbol="&#9664;" />
+          <Slide url={props.photoArray.length
+            ? props.photoArray[props.currentPhoto].Image_url : ''} />
+          <Arrow
+            direction="right"
+            clickFunc={props.nextSlide}
+            symbol="&#9654;" />
+        </div>
+      </Modal>
+    );
   }
-}
+  return null;
+};
 
 Carousel.propTypes = {
   photoArray: PropTypes.array,
   displayCarousel: PropTypes.bool,
-  startingPhoto: PropTypes.number,
   closeCarousel: PropTypes.func,
+  closeSymbol: PropTypes.string,
+  currentPhoto: PropTypes.number,
+  handleKeyPress: PropTypes.func,
   nextSlide: PropTypes.func,
   previousSlide: PropTypes.func,
-  closeSymbol: PropTypes.string,
 };
 
 export default Carousel;
