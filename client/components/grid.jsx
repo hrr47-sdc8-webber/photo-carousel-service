@@ -93,4 +93,13 @@ const GridModal = (props) => {
   return null;
 };
 
+GridModal.propTypes = {
+  photoArray: PropTypes.array,
+  displayGridModal: PropTypes.bool,
+  name: PropTypes.string,
+  closeGridModal: PropTypes.func,
+  closeSymbol: PropTypes.string,
+  openCarousel: PropTypes.func,
+};
+
 export default GridModal;

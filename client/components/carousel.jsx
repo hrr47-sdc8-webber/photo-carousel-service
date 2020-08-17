@@ -131,6 +131,8 @@ Carousel.propTypes = {
   nextSlide: PropTypes.func,
   previousSlide: PropTypes.func,
   name: PropTypes.string,
+  openGridModal: PropTypes.func,
+  gridIcon: PropTypes.string,
 };
 
 export default Carousel;
