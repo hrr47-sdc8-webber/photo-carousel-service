@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 const Slide = ({ url }) => {
   const SlideImage = styled.img`
   position: absolute;
-  max-width: 100%;
-  height: auto;
+  width: auto;
+  max-height: 100%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
