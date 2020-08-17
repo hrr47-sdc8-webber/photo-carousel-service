@@ -4,7 +4,7 @@ import $ from 'jquery';
 import styled from 'styled-components';
 import GridEntry from './components/gridEntry.jsx';
 import Carousel from './components/carousel.jsx';
-import ModalGrid from './components/grid.jsx';
+import GridModal from './components/grid.jsx';
 
 const Grid = styled.div`
 position: fixed;
@@ -140,7 +140,7 @@ class App extends React.Component {
           </Grid>
         </div>
         <div>
-          <ModalGrid photoArray={this.state.photoArray}
+          <GridModal photoArray={this.state.photoArray}
             openCarousel={this.openCarousel.bind(this)}
             closeGridModal={this.closeGridModal.bind(this)}
             displayGridModal={this.state.displayGridModal}
@@ -150,10 +150,12 @@ class App extends React.Component {
           <Carousel photoArray={this.state.photoArray}
             displayCarousel={this.state.displayCarousel}
             currentPhoto={this.state.currentPhoto}
+            openGridModal={this.openGridModal.bind(this)}
             closeCarousel={this.closeCarousel.bind(this)}
             previousSlide={this.previousSlide.bind(this)}
             nextSlide={this.nextSlide.bind(this)}
             handleKeyPress={this.handleKeyPress.bind(this)}
+            gridIcon="&#9633;"
             closeSymbol="&#x2715;"
             name={this.state.name} />
         </div>

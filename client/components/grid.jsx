@@ -12,6 +12,7 @@ grid-gap: 5px;
 height: auto;
 background-color: rgba(0, 0, 0, 0.8);
 left: 50%;
+top: 13%;
 transform: translate(-50%);
 `;
 
@@ -46,7 +47,6 @@ font-weight: bold;
 
 const TopBar = styled.div`
 position: fixed;
-margin-top: 40px;
 margin-bottom: 40px;
 width: 100%;
 z-index: 3;
@@ -77,8 +77,7 @@ background-color: rgba(0,0,0,1);
 }
 `;
 
-const ModalGrid = (props) => {
-  console.log(props);
+const GridModal = (props) => {
   if (props.displayGridModal) {
     return <Modal>
       <TopBar>
@@ -94,4 +93,4 @@ const ModalGrid = (props) => {
   return null;
 };
 
-export default ModalGrid;
+export default GridModal;
