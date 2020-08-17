@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS zagat;
+DROP DATABASE IF EXISTS zagatPhotoCarousel;
 
-CREATE DATABASE zagat;
+CREATE DATABASE zagatPhotoCarousel;
 
-USE zagat;
+USE zagatPhotoCarousel;
 
 CREATE TABLE Restaurants (
   Restaurant_id int NOT NULL AUTO_INCREMENT,
