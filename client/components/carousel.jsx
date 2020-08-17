@@ -6,21 +6,20 @@ import Arrow from './arrow.jsx';
 
 const Modal = styled.div`
 position: fixed;
-z-index: 1;
-padding-top: 30px;
+z-index: 2;
 width: 100vw;
+left: 0%;
+top: 0%;
 height: 100vh;
-overflow: auto;
-background-color: rgba(0, 0, 0, 0.8);
+background-color: rgba(0, 0, 0, 0.9);
 `;
 
 const CloseButton = styled.span`
 position: fixed;
-z-index: 1;
+z-index: 2;
 right: 5%;
-top: 10%;
 color: white;
-border-color: rgba(0,0,0,0.9);
+border-color: rgba(0,0,0,1);
 display: flex;
 justify-content: center;
 align-items: center;
@@ -30,21 +29,63 @@ cursor: pointer;
 border: 1px hidden;
 width: 40px;
 height: 40px;
-border-radius: 50%
-background-color: rgba(0,0,0,0.9);
+border-radius: 50%;
+background-color: rgba(0,0,0,1);
 &:hover{
-  color: rgba(0,0,0,0.9);
+  color: rgba(0,0,0,1);
   background-color: white;
   border-color: white;
 }
 `;
 
+const ItemCount = styled.div`
+position: fixed;
+font-family: Roboto, "Helvetica Neue", sans-serif;
+color: white;
+right: 10%;
+z-index: 2;
+height: auto;
+`;
+
+const RestaurantName = styled.div`
+position: absolute;
+font-family: Roboto, "Helvetica Neue", sans-serif;
+color: white;
+left: 50%;
+z-index: 2;
+height: auto;
+font-weight: bold;
+`;
+
+const TopBar = styled.div`
+position: fixed;
+margin-top: 40px;
+margin-bottom: 40px;
+width: 100%;
+z-index: 3;
+display: block;
+`;
+
+const PhotoWrapper = styled.div`
+position: fixed;
+height: 50vh;
+top: 25%;
+left: 50%;
+width: auto;
+margin-top: 5px;
+`;
+
 const Carousel = (props) => {
+  console.log(props);
   if (props.displayCarousel) {
     return (
       <Modal tabIndex={0} onKeyDown={(event) => props.handleKeyPress(event)}>
-        <CloseButton onClick={props.closeCarousel}>{props.closeSymbol}</CloseButton>
-        <div>
+        <TopBar>
+          <RestaurantName> {props.name} </RestaurantName>
+          <ItemCount >{props.currentPhoto + 1} of {props.photoArray.length}</ItemCount>
+          <CloseButton onClick={props.closeCarousel}>{props.closeSymbol}</CloseButton>
+        </TopBar>
+        <PhotoWrapper>
           <Arrow
             direction="left"
             clickFunc={props.previousSlide}
@@ -55,7 +96,7 @@ const Carousel = (props) => {
             direction="right"
             clickFunc={props.nextSlide}
             symbol="&#9654;" />
-        </div>
+        </PhotoWrapper>
       </Modal>
     );
   }
@@ -71,6 +112,7 @@ Carousel.propTypes = {
   handleKeyPress: PropTypes.func,
   nextSlide: PropTypes.func,
   previousSlide: PropTypes.func,
+  name: PropTypes.string,
 };
 
 export default Carousel;

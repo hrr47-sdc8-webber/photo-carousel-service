@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Arrow = ({ direction, clickFunc, symbol }) => {
   const LeftArrow = styled.span`
   color: white;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@ const Arrow = ({ direction, clickFunc, symbol }) => {
 
   const RightArrow = styled.span`
   color: white;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;

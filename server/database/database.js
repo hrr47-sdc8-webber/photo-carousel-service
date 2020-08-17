@@ -27,9 +27,10 @@ const insertImage = function insertImageIntoDb(imageURL, restaurantID) {
 };
 
 const retrieveImages = function retrieveImagesByRestaurantId(restaurantID, req, res) {
+  const responseData = {};
   const retrieveString = `SELECT Image_url FROM Images WHERE Restaurant_id = ${restaurantID}`;
-  connection.query(retrieveString, (err, result) => {
-    if (err) {
+  connection.query(retrieveString, (photoErr, result) => {
+    if (photoErr) {
       res.send('Photos not found for that restaurant');
       // I'll update error handling once I decide what my front end should do in this situation
       return;
@@ -41,7 +42,16 @@ const retrieveImages = function retrieveImagesByRestaurantId(restaurantID, req, 
       photoArray[i].Image_id = i + 1;
       photoArray[i].Image_url = s3Prefix.concat(photoArray[i].Image_url);
     }
-    res.send(photoArray);
+    responseData.photoArray = photoArray;
+    const retrieveNameString = `SELECT Restaurant_Name from Restaurants WHERE Restaurant_id = ${restaurantID}`;
+    connection.query(retrieveNameString, (nameErr, name) => {
+      if (nameErr) {
+        res.send('Error retrieving restaurant name');
+        return;
+      }
+      responseData.name = name[0].Restaurant_Name;
+      res.send(responseData);
+    });
   });
 };
 
