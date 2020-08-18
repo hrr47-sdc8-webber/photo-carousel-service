@@ -34,6 +34,8 @@ color: white;
 }
 `;
 
+const apiEndpoint = 'http://localhost:3001/';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -50,12 +52,11 @@ class App extends React.Component {
   retrievePhotos(restaurantID) {
     const options = {
       method: 'get',
-      url: `api/photos/${restaurantID}`,
+      url: `${apiEndpoint}api/photos/${restaurantID}`,
       failure: () => {
         console.log('Request failed');
       },
       complete: (res) => {
-        console.log(res.responseJSON);
         this.setState({
           photoArray: res.responseJSON.photoArray,
           name: res.responseJSON.name.toUpperCase(),
