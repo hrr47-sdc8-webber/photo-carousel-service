@@ -7,7 +7,7 @@ import Carousel from './components/carousel.jsx';
 import GridModal from './components/grid.jsx';
 
 const Grid = styled.div`
-position: fixed;
+position: static;
 z-index: 0;
 display: grid;
 overflow: hidden;
