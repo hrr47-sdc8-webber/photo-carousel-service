@@ -46,7 +46,7 @@ font-weight: bold;
 `;
 
 const TopBar = styled.div`
-position: fixed;
+position: static;
 margin-bottom: 40px;
 width: 100%;
 z-index: 3;
