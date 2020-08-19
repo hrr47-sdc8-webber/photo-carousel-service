@@ -9,9 +9,10 @@ margin: auto;
 grid-column-end: span 2;
 transition: transform .2s;
 overflow: hidden;
+cursor: pointer;
 &:hover{
+  filter: brightness(85%);
   transform: scale(1.02);
-  cursor: pointer;
 }
 `;
 
@@ -20,21 +21,34 @@ max-width: 99%;
 margin: auto;
 transition: transform .2s;
 overflow: hidden;
+cursor: pointer;
 &:hover{
+  filter: brightness(85%);
   transform: scale(1.02);
-  cursor: pointer;
 }
+`;
+
+const BigContainer = styled.div`
+overflow: hidden;
+grid-row-end: span 2;
+grid-column-end: span 2;
+`;
+
+const SmallContainer = styled.div`
+overflow: hidden;
 `;
 
 const GridEntry = (props) => {
   if (props.photo.Image_id % 3 === 1) {
-    return <BigImage src={props.photo.Image_url}
+    return <BigContainer><BigImage src={props.photo.Image_url}
       onClick={() => { props.openCarousel(props.photo.Image_id); }}
-    />;
+    />
+    </BigContainer>;
   }
-  return <SmallImage src={props.photo.Image_url}
+  return <SmallContainer><SmallImage src={props.photo.Image_url}
     onClick={() => { props.openCarousel(props.photo.Image_id); }}
-  />;
+  />
+  </SmallContainer>;
 };
 
 GridEntry.propTypes = {

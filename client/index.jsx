@@ -20,7 +20,7 @@ grid-column-gap: 2px;
 
 const Container = styled.div`
 position: relative;
-overflow: auto;
+overflow: hidden;
 `;
 
 const OpenButton = styled.span`
@@ -38,6 +38,10 @@ color: white;
   background-color: rgba(0,0,0,0.7)
 }
 `;
+
+const gridEntryStyle = {
+  overflow: 'hidden',
+};
 
 const apiEndpoint = 'http://localhost:3001/';
 
