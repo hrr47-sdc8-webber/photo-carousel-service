@@ -29,7 +29,7 @@ top: 45%;
 right: 5%;
 position: absolute;
 text-align: center;
-font-family: Arial, Helvetica, sans-serif;
+font-family: Roboto, "Helvetica Neue", sans-serif;
 font-size: small;
 padding: 10px 3px 10px 3px;
 width: 100px;
