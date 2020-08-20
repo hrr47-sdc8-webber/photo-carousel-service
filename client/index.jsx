@@ -29,13 +29,15 @@ top: 45%;
 right: 5%;
 position: absolute;
 text-align: center;
+font-family: Roboto, "Helvetica Neue", sans-serif;
+font-size: small;
 padding: 10px 3px 10px 3px;
 width: 100px;
-background-color: rgba(0,0,0,0.5);
+background-color: rgba(0,0,0,0.6);
 cursor: pointer;
 color: white;
 &:hover{
-  background-color: rgba(0,0,0,0.7)
+  background-color: rgba(0,0,0,1)
 }
 `;
 
