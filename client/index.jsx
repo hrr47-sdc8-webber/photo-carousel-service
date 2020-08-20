@@ -18,9 +18,14 @@ grid-row-gap: 3px;
 grid-column-gap: 2px;
 `;
 
+const Container = styled.div`
+position: relative;
+overflow: hidden;
+`;
+
 const OpenButton = styled.span`
 z-index: 1;
-top: 12vw;
+top: 45%;
 right: 5%;
 position: absolute;
 text-align: center;
@@ -33,6 +38,10 @@ color: white;
   background-color: rgba(0,0,0,0.7)
 }
 `;
+
+const gridEntryStyle = {
+  overflow: 'hidden',
+};
 
 const apiEndpoint = 'http://localhost:3001/';
 
@@ -132,14 +141,17 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className='grid'>
+        <Container>
           <Grid>
             {this.state.photoArray.map((photo, i) => <GridEntry
               key={i} photo={photo} openCarousel={this.openCarousel.bind(this)}
               closeCarousel={this.closeCarousel.bind(this)}
             />)}
           </Grid>
-        </div>
+            <OpenButton
+              onClick={this.openGridModal.bind(this)}>
+              {this.state.photoArray.length} PHOTOS + </OpenButton>
+        </Container>
         <div>
           <GridModal photoArray={this.state.photoArray}
             openCarousel={this.openCarousel.bind(this)}
@@ -160,9 +172,7 @@ class App extends React.Component {
             closeSymbol="&#x2715;"
             name={this.state.name} />
         </div>
-        <OpenButton
-          onClick={this.openGridModal.bind(this)}>
-          {this.state.photoArray.length} Photos + </OpenButton>
+
       </div>
     );
   }
