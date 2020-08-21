@@ -7,26 +7,30 @@ import Carousel from './components/carousel.jsx';
 import GridModal from './components/grid.jsx';
 
 const Grid = styled.div`
-position: static;
+position: relative;
 z-index: 0;
 display: grid;
 overflow: hidden;
-grid-template-columns: 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw 16vw;
-grid-template-rows: 12vw 12vw;
+grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+grid-template-rows: minmax(100px, 150px) minmax(100px, 150px);
 grid-auto-flow: column;
-grid-row-gap: 3px;
-grid-column-gap: 2px;
+grid-row-gap: 2px;
+grid-column-gap: 4px;
 `;
 
 const Container = styled.div`
 position: relative;
+width: 10000px;
+`;
+
+const ImageBar = styled.div`
 overflow: hidden;
 `;
 
 const OpenButton = styled.span`
 z-index: 1;
+left: 85vw;
 top: 45%;
-right: 5%;
 position: absolute;
 text-align: center;
 font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -40,10 +44,6 @@ color: white;
   background-color: rgba(0,0,0,1)
 }
 `;
-
-const gridEntryStyle = {
-  overflow: 'hidden',
-};
 
 const apiEndpoint = 'http://localhost:3001/';
 
@@ -142,7 +142,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <ImageBar>
         <Container>
           <Grid>
             {this.state.photoArray.map((photo, i) => <GridEntry
@@ -175,7 +175,7 @@ class App extends React.Component {
             name={this.state.name} />
         </div>
 
-      </div>
+      </ImageBar>
     );
   }
 }

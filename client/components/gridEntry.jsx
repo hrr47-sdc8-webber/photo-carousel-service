@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const BigImage = styled.img`
-max-width: 100%;
+width: 100%;
+height: 100%;
+object-fit: cover;
 margin: auto;
 transition: transform .2s;
-overflow: auto;
 cursor: pointer;
 &:hover{
   filter: brightness(85%);
@@ -15,10 +16,11 @@ cursor: pointer;
 `;
 
 const SmallImage = styled.img`
-max-width: 99%;
+width: 100%;
+height: 100%;
+object-fit: cover;
 margin: auto;
 transition: transform .2s;
-overflow: auto;
 cursor: pointer;
 &:hover{
   filter: brightness(85%);
@@ -30,10 +32,14 @@ const BigContainer = styled.div`
 overflow: hidden;
 grid-row-end: span 2;
 grid-column-end: span 2;
+width: 100%;
+height: 100%;
 `;
 
 const SmallContainer = styled.div`
 overflow: hidden;
+width: 100%;
+height: 100%;
 `;
 
 const GridEntry = (props) => {
