@@ -3,13 +3,25 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
+  password: 'test',
   database: 'zagatPhotoCarousel',
 });
 
 connection.connect();
 
-const insertRestaurant = function insertRestaurantIntoDb(name, restaurantID) {
-  const insertString = `INSERT into Restaurants (Restaurant_Name, Restaurant_id) values ("${name}", ${restaurantID})`;
+const insertRestaurant = (name) => {
+  const insertString = `INSERT into Restaurants (Restaurant_Name) values ("${name}")`;
+  connection.query(insertString, (err) => {
+    if (err) {
+      throw err;
+    }
+    console.log('Entered ', name, 'into database');
+    return name;
+  });
+};
+
+const insertImage = (imageURL, restaurantID) => {
+  const insertString = `INSERT into Images (Image_url, Restaurant_id) values ('${imageURL}', '${restaurantID}')`;
   connection.query(insertString, (err) => {
     if (err) {
       throw err;
@@ -17,11 +29,46 @@ const insertRestaurant = function insertRestaurantIntoDb(name, restaurantID) {
   });
 };
 
-const insertImage = function insertImageIntoDb(imageURL, restaurantID) {
-  const insertString = `INSERT into Images (Image_url, Restaurant_id) values ('${imageURL}', ${restaurantID})`;
-  connection.query(insertString, (err) => {
+const updateRestaurantImagesFromId = (Image_id, Image, res) => {
+  const insertString = `UPDATE Images SET Image_url = '${Image}' WHERE Image_id = ${Image_id};`;
+  connection.query(insertString, (err, results) => {
     if (err) {
-      throw err;
+      res.status(501).send(`Error updating database: ${err}`);
+    } else {
+      res.status(200).send(`Successfully updated database: ${results}`);
+    }
+  });
+};
+
+async function insertRestaurantListing(name, images, res) {
+  await insertRestaurant(name);
+  connection.query(`SELECT Restaurant_id FROM Restaurants WHERE Restaurant_Name='${name}';`, (err, result) => {
+    if (err) {
+      res.status(501).send(`Error inserting into database: ${err}`);
+    } else {
+      const restId = result[0].Restaurant_id;
+      for (let i = 0; i < images.length; i++) {
+        insertImage(images[i], restId);
+      }
+      res.status(200).send('Inserted into database');
+    }
+  });
+};
+
+const deleteRestaurantFromId = (restaurantId, res) => {
+  const imagesDeleteString = `DELETE FROM Images WHERE Restaurant_id=${restaurantId};`;
+  connection.query(imagesDeleteString, (errImages) => {
+    if (errImages) {
+      res.status(501).send(`Error deleting images from database: ${errImages}`);
+    } else {
+      const restaurantDeleteString = `DELETE FROM Restaurants WHERE Restaurant_id=${restaurantId};`;
+      connection.query(restaurantDeleteString, (errRest) => {
+        if (errRest) {
+          res.status(501).send(`Error deleting restaurantfrom database: ${errImages}`);
+        } else {
+          res.status(200).send('Successfully deleted from database');
+        }
+      });
     }
   });
 };
@@ -36,7 +83,7 @@ const retrieveImages = function retrieveImagesByRestaurantId(restaurantID, req, 
       return;
     }
     // lint doesn't like it if you try to assign new values to result directly (no-param-reassign)
-    const s3Prefix = 'https://restaurant-photo-carousel.s3.us-east-2.amazonaws.com/';
+    const s3Prefix = 'https://photo-carousel-service.s3-us-west-1.amazonaws.com/';
     const photoArray = result;
     for (let i = 0; i < photoArray.length; i += 1) {
       photoArray[i].Image_id = i + 1;
@@ -58,3 +105,6 @@ const retrieveImages = function retrieveImagesByRestaurantId(restaurantID, req, 
 module.exports.insertRestaurant = insertRestaurant;
 module.exports.insertImage = insertImage;
 module.exports.retrieveImages = retrieveImages;
+module.exports.updateRestaurantImagesFromId = updateRestaurantImagesFromId;
+module.exports.insertRestaurantListing = insertRestaurantListing;
+module.exports.deleteRestaurantFromId = deleteRestaurantFromId;
