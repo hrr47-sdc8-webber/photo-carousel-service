@@ -21,16 +21,23 @@
 #### CRUD API Commands
 
 ##### 'C'reate
-The legacy server code currently supports POST requests givin by the endpoint ```/api/photos``` which conforms to REST standard naming.  The server expects a JSON object with two properties: key 'name' with a value type string for the restaurant name, and key 'images' with a value type array which holds the suffix URL to the images hosted on S3, e.g. 'img0002.jpeg'
+The legacy server code currently supports POST requests givin by the endpoint ```/api/photos``` which conforms to REST standard naming.  The server expects a JSON object with two properties:
+* key 'name' with a value type string for the restaurant name
+* key 'images' with a value type array which holds the suffix URL to the images hosted on S3, e.g. 'img0002.jpeg'
 
 ##### 'R'ead
 The legacy server code currently supports GET requests givin by the endpoint ```/api/photos/:restaurantID``` which conforms to REST standard naming.  The server expects no data passed along to the server, besides going to an applicable endpoint (listed down below in the [Development](#development) section)
 
 ##### 'U'pdate
-The legacy server code currently supports PUT requests givin by the endpoint ```/api/photos/:restaurantID``` which conforms to REST standard naming.  The server expects a JSON object with two properties: key 'Image_id' with a value type number for the Image_id, and key 'Image' with a value type string which represents the suffix URL to the images hosted on S3, e.g. 'img0002.jpeg'
+The legacy server code currently supports PUT requests givin by the endpoint ```/api/photos/:restaurantID``` which conforms to REST standard naming.  The server expects a JSON object with two properties:
+* key 'Image_id' with a value type number for the Image_id
+* key 'Image' with a value type string which represents the suffix URL to the images hosted on S3, e.g. 'img0002.jpeg'
 
 ##### 'D'elete
-The legacy server code currently supports DELETE requests givin by the endpoint ```/api/photos/:restaurantID``` which conforms to REST standard naming.  The server expects a JSON object with one property: key 'id' with a value type number for the 'Restaurant_id' that points to the listing which will be removed.
+The legacy server code currently supports DELETE requests givin by the endpoint ```/api/photos/:restaurantID``` which conforms to REST standard naming.  The server expects a JSON object with one property:
+* key 'id' with a value type number for the 'Restaurant_id' that points to the listing which will be removed.
+
+> The front-end only supports GET requests at this time but the other request types listed above can be tested via Postman.
 
 ## Requirements
 
