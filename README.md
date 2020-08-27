@@ -72,7 +72,7 @@ This will install all necessary dependencies.
 
 #### Getting Started
 
-The first and foremost task is to get mysql downloaded, up and running.  After that, you should update your database login information in ````server/database/database.js```.
+The first and foremost task is to get mysql downloaded, up and running.  After that, you should update your database login information in ```server/database/database.js```.
 
 Next step is to run the schema.sql by using ```npm run schema``` which will destroy and recreate the database schema from scratch (whcih is fine for this project.) Then, run the seeding script ```npm run seed```. This will seed the database with mock data that can be viewed by going to endpoints of id 1-100 (explained later.)
 
