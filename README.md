@@ -22,7 +22,7 @@
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-### Dependencies
+#### Dependencies
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.2",
     "cors": "^2.8.5",
@@ -38,7 +38,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
     "styled-components": "^5.1.1",
     "webpack": "^4.44.1"
 
-### Dev Dependencies
+#### Dev Dependencies
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
@@ -60,7 +60,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ## Development
 
-### Installing Dependencies
+#### Installing Dependencies
 
 From within the root directory:
 
@@ -70,7 +70,7 @@ npm install
 ```
 This will install all necessary dependencies.
 
-### Getting Started
+#### Getting Started
 
 The first and foremost task is to get mysql downloaded, up and running.  After that, you should update your database login information in ````server/database/database.js```.
 
@@ -83,7 +83,7 @@ npm run start
 ```
 Following that, you can open up a browser and go to http://localhost:3001/(:id) where (:id) represents an id referencing a mock listing from the database.  You may use the numbers 1-100 for the id value.
 
-### Testing
+#### Testing
 
 Finally, to test the program you can run the following tests after code changes.  
 ```npm run test```  
