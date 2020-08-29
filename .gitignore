@@ -28,4 +28,5 @@ coverage
 build/
 dist/
 public/dist
+data.csv
 
