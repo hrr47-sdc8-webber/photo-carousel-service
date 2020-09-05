@@ -1,18 +1,12 @@
-DROP DATABASE IF EXISTS sdc
-CREATE DATABASE sdc;
+DROP DATABASE IF EXISTS "sdcPhotoCarousel";
+CREATE DATABASE "sdcPhotoCarousel";
 
-\connect sdc;
+\connect "sdcPhotoCarousel";
 
-DROP TABLE IF EXISTS images;
-DROP TABLE IF EXISTS restaurants;
+DROP TABLE IF EXISTS images_by_restaurant;
 
-CREATE TABLE IF NOT EXISTS restaurants (
+CREATE TABLE images_by_restaurant (
   id SERIAL PRIMARY KEY,
-  restaurantName VARCHAR ( 25 ) NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS images (
-  id SERIAL PRIMARY KEY,
-  restaurantId integer REFERENCES restaurants (id),
-  imageUrl VARCHAR(4)
+  restaurantName VARCHAR ( 25 ) NOT NULL,
+  imageUrl VARCHAR( 50 ) NOT NULL
 );

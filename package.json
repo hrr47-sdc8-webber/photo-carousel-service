@@ -8,11 +8,11 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node database/seed.js",
     "test": "jest",
-    "build": "webpack",
+    "build": "webpack -w",
     "start": "nodemon server/index.js",
-    "schema": "mysql -u root -p < server/schema.sql"
+    "schema": "mysql -u root -p < database/postgresqlSchema.sql",
+    "schema2": "sudo -u postgres psql < database/postgresqlSchema2.sql"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -50,6 +50,7 @@
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
     "jest": "^26.4.2",
+    "pg-promise": "^10.6.1",
     "webpack": "^4.44.0",
     "webpack-cli": "^3.3.12"
   }
