@@ -28,5 +28,7 @@ coverage
 build/
 dist/
 public/dist
-data.csv
+*.csv
+login.js
+
 

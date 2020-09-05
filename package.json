@@ -8,11 +8,11 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node server/seed.js",
     "test": "jest",
-    "build": "webpack",
+    "build": "webpack -w",
     "start": "nodemon server/index.js",
-    "schema": "mysql -u root -p < server/schema.sql"
+    "schema": "mysql -u root -p < database/postgresqlSchema.sql",
+    "schema2": "sudo -u postgres psql < database/postgresqlSchema2.sql"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -25,9 +25,11 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
+    "pg-promise": "^10.6.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "readline": "^1.3.0",
     "styled-components": "^5.1.1",
     "webpack": "^4.44.1"
   },
