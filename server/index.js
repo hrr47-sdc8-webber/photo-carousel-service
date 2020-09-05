@@ -17,7 +17,7 @@ app.get('/api/photos/:id', (req, res) => {
       console.error(err.stack);
       res.status(501).send('Error retrieving data from server');
     } else {
-      let imageUrlStrNums = JSON.parse(data.imageurl).map((num) => ((num < 10) ? `0${num}` : `${num}`));
+      const imageUrlStrNums = JSON.parse(data.imageurl).map((num) => ((num < 10) ? `0${num}` : `${num}`));
       const photoArray = [];
       for (let i = 0; i < imageUrlStrNums.length; i += 1) {
         photoArray[i] = {
@@ -25,7 +25,7 @@ app.get('/api/photos/:id', (req, res) => {
           Image_url: `https://photo-carousel-service.s3-us-west-1.amazonaws.com/img00${imageUrlStrNums[i]}.jpeg`,
         };
       }
-      let obj = {
+      const obj = {
         photoArray,
         name: data.restaurantname,
       };
