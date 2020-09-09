@@ -1,11 +1,10 @@
-require('newrelic');
 /* eslint-disable no-console */
 const express = require('express');
 const cors = require('cors');
 const db = require('../database/databaseHelpers.js');
 
 const app = express();
-const port = 3001;
+const port = 4003;
 
 app.use(cors());
 app.use(express.json());
