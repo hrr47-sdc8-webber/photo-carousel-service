@@ -45,7 +45,7 @@ color: white;
 }
 `;
 
-const apiEndpoint = 'http://localhost:3001/';
+const serverUrl = 'http://13.57.58.37:3003';
 
 class App extends React.Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class App extends React.Component {
   retrievePhotos(restaurantID) {
     const options = {
       method: 'get',
-      url: `${apiEndpoint}api/photos/${restaurantID}`,
+      url: `${serverUrl}/api/photos/${restaurantID}`,
       failure: () => {
         console.log('Request failed');
       },
