@@ -10,7 +10,6 @@ const port = 3003;
 app.use(cors());
 app.use(express.json());
 app.use('/:id', express.static('./public'));
-app.use(express.static('./public'));
 
 // app.use('/api/photos/:id', createProxyMiddleware({
 //   target: 'http://13.57.10.126:4003',
@@ -38,6 +37,10 @@ app.get('/api/photos/:id', (req, res) => {
       res.status(200).send(obj);
     }
   });
+});
+
+app.get('/loaderio-790e82caeac41fa984d3c311bebf60cb/', (req, res) => {
+  res.status(200).send('loaderio-790e82caeac41fa984d3c311bebf60cb');
 });
 
 app.listen(port, () => {
