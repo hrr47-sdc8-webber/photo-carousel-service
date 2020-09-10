@@ -45,7 +45,7 @@ color: white;
 }
 `;
 
-const serverUrl = 'http://13.57.58.37:3003';
+const serverUrl = 'http://13.57.187.79:3003';
 
 class App extends React.Component {
   constructor(props) {

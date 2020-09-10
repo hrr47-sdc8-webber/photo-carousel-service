@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/:id', express.static('./public'));
 app.use(express.static('./public'));
 
-app.get('/api/photos/:id', createProxyMiddleware({
+app.use('/api/photos/:id', createProxyMiddleware({
   target: 'http://13.57.10.126:4003',
   changeOrigin: true,
 }));
