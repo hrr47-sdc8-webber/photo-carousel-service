@@ -39,7 +39,7 @@ app.get('/api/photos/:id', (req, res) => {
   });
 });
 
-app.get('/loaderio-790e82caeac41fa984d3c311bebf60cb/', (req, res) => {
+app.get('/api/photos/loaderio-790e82caeac41fa984d3c311bebf60cb/', (req, res) => {
   res.status(200).sendFile(__dirname + '../loaderio-790e82caeac41fa984d3c311bebf60cb.txt');
 });
 
