@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 const express = require('express');
-const { createProxyMiddleware } = require('http-proxy-middleware');
 const cors = require('cors');
 const path = require('path');
 const db = require('../database/databaseHelpers.js');
