@@ -2,6 +2,7 @@
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const cors = require('cors');
+const path = require('path');
 const db = require('../database/databaseHelpers.js');
 
 const app = express();
@@ -10,7 +11,7 @@ const port = 3003;
 app.use(cors());
 app.use(express.json());
 app.use('/loaderio-790e82caeac41fa984d3c311bebf60cb', (req, res) => {
-  res.status(200).sendFile(__dirname + '/../loaderio-790e82caeac41fa984d3c311bebf60cb.txt');
+  res.status(200).sendFile(path.resolve('loaderio-790e82caeac41fa984d3c311bebf60cb.txt'));
 });
 app.use('/:id', express.static('./public'));
 
