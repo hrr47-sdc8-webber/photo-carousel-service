@@ -10,11 +10,9 @@ const port = 3003;
 app.use(cors());
 app.use(express.json());
 app.use('/:id', express.static('./public'));
-
-// app.use('/api/photos/:id', createProxyMiddleware({
-//   target: 'http://13.57.10.126:4003',
-//   changeOrigin: true,
-// }));
+app.use('/loaderio-790e82caeac41fa984d3c311bebf60cb', (req, res) => {
+  res.status(200).sendFile('../loaderio-790e82caeac41fa984d3c311bebf60cb.txt');
+});
 
 app.get('/api/photos/:id', (req, res) => {
   db.getImagesByRestaurantId(req.params.id, (err, data) => {
@@ -39,9 +37,9 @@ app.get('/api/photos/:id', (req, res) => {
   });
 });
 
-app.get('/api/photos/loaderio-790e82caeac41fa984d3c311bebf60cb/', (req, res) => {
-  res.status(200).sendFile('../loaderio-790e82caeac41fa984d3c311bebf60cb.txt');
-});
+// app.get('/api/photos/loaderio-790e82caeac41fa984d3c311bebf60cb', (req, res) => {
+//   res.status(200).sendFile('../loaderio-790e82caeac41fa984d3c311bebf60cb.txt');
+// });
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
